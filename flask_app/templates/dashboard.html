@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Private Wall</title>
+</head>
+    <body>
+        <div class="card col-12">
+            <div class="card-body">
+                <h1>CodingDojo Wall</h1>
+                <h2 class="card-title">Welcome {{session['first_name']}}</h2>
+                <form action="/logout" class="bg-dark text-primary p-5 rounded col-6 mx-auto"> 
+                    <input type="submit" value="Logout" class="btn btn-primary">
+                </form>
+            </div> 
+        </div>
+        <div class="d-flex flex-wrap justify-content-around">
+            <form action="/register" method="post" class="col-6 p-3 bg-dark text-light">
+                <h2 class="text-center text-primary">()Messages for You</h2>
+                <div class="form-group">
+                    {% for m in messages %}
+                        <p>{{user.first_name}} said {{since_time}}</p>
+                        <p>{{m}}</p>
+                        <a href="/delete"><img src="smiley.gif" alt="HTML tutorial" style="width:42px;height:42px;"></a>
+                    {% endfor %}
+                </div>
+                <input type="submit" value="Register" name="registration" class="form-control">
+    
+            </form>
+            <div class="card col-6">
+                <form action="/login" method="post" class="col-6 p-3 bg-dark text-light">
+                    <h2 class="text-center text-primary">Send Messages</h2>
+                    <p>You have sent () messages so far</p>
+                    <div class="form-group">
+                        {% for u in users %}
+                            {{u.first_name}}
+                            <form action="/process" name='send_messgage'>
+                                <textarea name="message" id="message" cols="30" rows="10"></textarea>
+                                <input type="submit" class="btn btn-success" value="Send">
+                            </form>
+                        {% endfor %}
+                    </div>
+                    
+                </form>
+                </div>
+            </div>
+    </body>
+</html>
