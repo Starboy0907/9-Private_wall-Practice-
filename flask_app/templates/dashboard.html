@@ -8,30 +8,29 @@
     <title>Private Wall</title>
 </head>
     <body>
-        <div class="card col-12">
-            <div class="card-body">
+        <div class="card col-12 d-flex flex-wrap justify-content-around">
+            <div class="card-body col-12 d-flex pt-2 flex-wrap justify-content-around">
                 <h1>CodingDojo Wall</h1>
                 <h2 class="card-title">Welcome {{session['first_name']}}</h2>
                 <form action="/logout" class="bg-dark text-primary p-5 rounded col-6 mx-auto"> 
-                    <input type="submit" value="Logout" class="btn btn-primary">
+                    <input type="submit" value="logout" class="btn btn-primary">
                 </form>
             </div> 
         </div>
         <div class="d-flex flex-wrap justify-content-around">
-            <form action="/register" method="post" class="col-6 p-3 bg-dark text-light">
+            <form action="/send" method="post" class="col-6 p-3 bg-dark text-light">
                 <h2 class="text-center text-primary">()Messages for You</h2>
                 <div class="form-group">
                     {% for m in messages %}
-                        <p>{{user.first_name}} said {{since_time}}</p>
+                        <p>{{M.first_name}} said {{since_time}}</p>
                         <p>{{m}}</p>
-                        <a href="/delete"><img src="smiley.gif" alt="HTML tutorial" style="width:42px;height:42px;"></a>
+                        <a href="/delete"><img src="smiley.gif" alt="trash" style="width:42px;height:42px;"></a>
                     {% endfor %}
                 </div>
-                <input type="submit" value="Register" name="registration" class="form-control">
     
             </form>
             <div class="card col-6">
-                <form action="/login" method="post" class="col-6 p-3 bg-dark text-light">
+                <form action="/message" method="post" class="col-12 p-3 bg-dark text-light">
                     <h2 class="text-center text-primary">Send Messages</h2>
                     <p>You have sent () messages so far</p>
                     <div class="form-group">

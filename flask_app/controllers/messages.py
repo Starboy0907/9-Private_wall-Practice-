@@ -6,7 +6,7 @@ from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
 @app.route('/process', methods=['POST'])
-def send_message():
+def send_message(data):
     data = {
         "message" : request.form["message"],
         "message_id": request.form["message_id"]

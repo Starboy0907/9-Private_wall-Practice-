@@ -10,7 +10,13 @@
 <body>
     <div class="d-flex flex-wrap justify-content-around">
         <form action="/register" method="post" class="col-6 p-3 bg-dark text-light">
-            }
+            {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                {% if messages %}                            <!-- check if there are any messages -->
+                    {% for message in messages %}            <!-- loop through the messages -->
+                        <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
             <h2 class="text-center text-primary">Registration</h2>
             <div class="form-group">
                 <label for="first_name">First Name:</label>
@@ -29,7 +35,13 @@
         </form>
         <div class="card col-6">
             <form action="/login" method="post" class="col-6 p-3 bg-dark text-light">
-                
+                {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                    {% if messages %}                            <!-- check if there are any messages -->
+                        {% for message in messages %}            <!-- loop through the messages -->
+                            <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
                 <h2 class="text-center text-primary">Login</h2>
                 <div class="form-group">
                     <label for="email">Email:</label>

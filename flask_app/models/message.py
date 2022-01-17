@@ -12,10 +12,11 @@ class Message:
         self.updated_at = data['updated_at']
         self.messages = []
 
+
     @classmethod
-    def save(cls, data):
+    def get_all(cls):
         query = "SELECT * from messages;"
-        return connectToMySQL('private_wall')
+        return connectToMySQL('private_wall').query_db(query)
 
     @classmethod
     def destroy(cls,data):
